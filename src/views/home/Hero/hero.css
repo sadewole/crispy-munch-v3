@@ -1,0 +1,14 @@
+.shape {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+.shape img {
+  max-width: 80%;
+  height: 'auto';
+}
+.hero-image {
+  max-width: 300px;
+}
