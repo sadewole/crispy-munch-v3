@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Box } from '@chakra-ui/layout';
 import Topbar from './Topbar';
 import Footer from './Footer';
 
@@ -10,9 +11,9 @@ const MainLayout = () => {
     return (
         <div className="root" >
             <Topbar />
-            <div className="wrapper">
+            <Box flex={1}>
                 <Outlet />
-            </div>
+            </Box>
             <Footer />
         </div>
     );
