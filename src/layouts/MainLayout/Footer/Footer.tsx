@@ -1,6 +1,8 @@
 import { Box, Grid, Link } from '@chakra-ui/layout';
 import React, { Fragment } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { FaTwitter, FaLinkedin, FaFacebook, FaGooglePlus } from "react-icons/fa";
+import { IconButton } from '@chakra-ui/button';
 
 import './footer.css';
 
@@ -65,22 +67,22 @@ const Footer = () => {
               <li>Connect with us</li>
               <li>
                 <Link as={RouterLink} to='#'>
-                  <i className='fab fa-facebook'></i>
+                  <IconButton icon={<FaFacebook />} aria-label="Facebook account" color="darkgray" />
                 </Link>
               </li>
               <li>
                 <Link as={RouterLink} to='#'>
-                  <i className='fab fa-linkedin'></i>
+                  <IconButton icon={<FaLinkedin />} aria-label="LinkedIn account" color="darkgray" />
                 </Link>
               </li>
               <li>
                 <Link as={RouterLink} to='#'>
-                  <i className='fab fa-twitter'></i>
+                  <IconButton icon={<FaTwitter />} aria-label="Twitter account" color="darkgray" />
                 </Link>
               </li>
               <li>
                 <Link as={RouterLink} to='#'>
-                  <i className='fab fa-google-plus'></i>
+                  <IconButton icon={<FaGooglePlus />} aria-label="Google-plus account" color="darkgray" />
                 </Link>
               </li>
             </ul>

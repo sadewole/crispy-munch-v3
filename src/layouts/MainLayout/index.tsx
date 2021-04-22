@@ -4,18 +4,15 @@ import { Box } from '@chakra-ui/layout';
 import Topbar from './Topbar';
 import Footer from './Footer';
 
-// css
-import './mainLayout.css';
-
 const MainLayout = () => {
     return (
-        <div className="root" >
+        <Box display="flex" flexDirection="column" width="100%" height="100%" overflow="hidden">
             <Topbar />
             <Box flex={1}>
                 <Outlet />
             </Box>
             <Footer />
-        </div>
+        </Box>
     );
 };
 
