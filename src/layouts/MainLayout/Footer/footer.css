@@ -1,0 +1,47 @@
+.footer-grid ul {
+  list-style: none;
+  text-align: left;
+}
+
+.footer-grid {
+  position: relative;
+  text-align: center;
+  padding: 1rem;
+  font-size: 14px;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.footer-grid a {
+  color: inherit;
+}
+
+.footer-grid ul li:first-child {
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: #666 solid 1px;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #333;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+}
+
+.social-icon ul li:not(:first-child) {
+  display: inline;
+  font-size: 1.5rem;
+  transition: all 0.5s;
+  margin: 10px;
+}
+
+.social-icon ul li:not(:first-child):hover {
+  opacity: 0.3;
+}

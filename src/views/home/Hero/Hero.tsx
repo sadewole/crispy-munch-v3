@@ -1,16 +1,19 @@
-import { Box, Container, Flex} from '@chakra-ui/layout';
+import { Box, Container, Flex, Text } from '@chakra-ui/layout';
 import React from 'react';
-
+import Typing from './Typing';
 // css
 import './hero.css';
 
 const Hero = () => {
   return (
-    <Box minHeight="full" >
+    <Box minHeight="550px" >
       <Container maxW="container.xl">
         <Flex flexWrap="wrap" justifyContent="space-between" >
-          <Box maxWidth="lg" display="flex" alignItems="center" justifyContent="center" padding="10" >
-            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, est corporis id sit, explicabo odit voluptate veniam hic harum tempore aliquam sapiente enim animi facilis ipsa ipsum accusamus? Vel, est quasi a sit ipsam, labore necessitatibus eligendi tempora laudantium illum quis tempore asperiores eum quisquam reprehenderit sunt nisi. Sit amet ipsum consectetur nihil impedit obcaecati quos doloremque nobis commodi rem. Eveniet ex quibusdam quos nesciunt soluta adipisci a, facilis ullam fugit tenetur quisquam omnis dignissimos tempore temporibus voluptatibus assumenda quod, accusamus animi? Tempora sunt odio accusamus, fugiat modi eaque ipsa omnis vel vero doloremque, amet at, reprehenderit illum sed possimus?</h1>
+          <Box maxWidth="lg" display="flex" alignItems="center" justifyContent="center" padding={{ base: 5, sm: 10 }}>
+            <Box>
+              <Text fontSize={{ base: "2xl", sm: "4xl" }} mb="4">Enjoy the best taste for your  <Typing /></Text>
+              <Text fontSize={{ base: "base", md: "2xl" }}>Why eating junk when Crispy Munch is capable of enreaching your taste.</Text>
+            </Box>
           </Box>
 
           <Box flex="1" >
@@ -20,7 +23,7 @@ const Hero = () => {
               </div>
               <Box display="flex" alignItems="center" justifyContent="center">
                 <div className="hero-image" >
-                <img alt="Presentation" src="/images/home/iphone-right.png" />
+                  <img alt="Presentation" src="/images/home/iphone-right.png" />
                 </div>
               </Box>
             </Box>

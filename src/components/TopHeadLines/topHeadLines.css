@@ -1,0 +1,23 @@
+.top-line {
+  position: relative;
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  margin-bottom: 1.6rem;
+}
+
+.top-line::after {
+  content: '';
+  width: calc(100% - 90%);
+  position: absolute;
+  top: 55px;
+  margin-left: -25px;
+  height: 3px;
+  background: #000;
+}
+
+@media (max-width: 420px) {
+  .top-line::after {
+    top: 40px;
+  }
+}

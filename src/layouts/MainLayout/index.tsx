@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Topbar from './Topbar'
+import Topbar from './Topbar';
+import Footer from './Footer';
 
 // css
-import './mainLayout.css'
+import './mainLayout.css';
 
 const MainLayout = () => {
     return (
@@ -12,8 +13,9 @@ const MainLayout = () => {
             <div className="wrapper">
                 <Outlet />
             </div>
+            <Footer />
         </div>
-    )
-}
+    );
+};
 
-export default MainLayout
+export default MainLayout;
