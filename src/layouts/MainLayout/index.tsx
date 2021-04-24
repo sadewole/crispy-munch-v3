@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Box } from '@chakra-ui/layout';
 import Topbar from './Topbar';
 import Footer from './Footer';
-import AuthBase from './Topbar/Auth';
+import AuthBase from './Auth';
 
 const MainLayout = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -12,7 +12,7 @@ const MainLayout = () => {
 
     return (
         <>
-            <Box display="flex" flexDirection="column" width="100%" height="100%" overflow="hidden">
+            <Box display="flex" flexDirection="column" width="100%" height="100%" minH="100vh" overflow="hidden">
                 <Topbar toggleLogin={handleAuthBase} />
                 <Box flex={1}>
                     <Outlet />

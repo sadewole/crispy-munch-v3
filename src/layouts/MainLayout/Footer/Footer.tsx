@@ -91,7 +91,7 @@ const Footer = () => {
         </Grid>
         <div className='footer-bottom'>
           <p>
-            &copy; 2021 - Crispy Munch -<Link to="https://twitter.com/samador9" ><b>Developed by SAMADOR</b></Link>
+            &copy; 2021 - Crispy Munch -<Link href="https://twitter.com/samador9" as="a" target="_blank" ><b>Developed by SAMADOR</b></Link>
           </p>
         </div>
       </footer>
