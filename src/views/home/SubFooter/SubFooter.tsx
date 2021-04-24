@@ -6,7 +6,7 @@ import './subFooter.css';
 const SubFooter = () => {
     return (
         <Box my="40" >
-            <Container maxWidth={{ base: "90%", sm: "85%" }} minHeight="500px" bgColor="yellow.700" borderRadius="10px" >
+            <Container maxWidth={{ base: "90%", sm: "85%" }} minHeight="500px" bgColor="red.700" borderRadius="10px" >
                 <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={6} my="10">
                     <Box position="relative" width="100%" minH={{ base: "300px", sm: "500px" }} display="flex" alignItems="center" justifyContent="center" >
                         <Box maxWidth="400px" className="absolute-image" height="inherit" >

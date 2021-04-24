@@ -3,6 +3,7 @@ import React from 'react';
 import Typing from './Typing';
 // css
 import './hero.css';
+import { Button } from '@chakra-ui/button';
 
 const Hero = () => {
   return (
@@ -13,6 +14,7 @@ const Hero = () => {
             <Box>
               <Text fontSize={{ base: "2xl", sm: "4xl" }} mb="4">Enjoy the best taste for your  <Typing /></Text>
               <Text fontSize={{ base: "base", md: "2xl" }}>Why eating junk when Crispy Munch is capable of enreaching your taste.</Text>
+              <Button _hover={{ bg: "red.900" }} bg="red.800" color="white" textTransform="uppercase" my="5">Explore Menu</Button>
             </Box>
           </Box>
 

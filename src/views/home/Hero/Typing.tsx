@@ -34,7 +34,7 @@ const Typing = () => {
     });
 
     return (
-        <Text fontSize={{ base: "3xl", md: "5xl" }} fontWeight="bold" as="span" color="yellow.500">
+        <Text fontSize={{ base: "3xl", md: "5xl" }} fontWeight="bold" as="span" color="red.800">
             <span ref={el => typingRef.current = el} />
         </Text>
     );
