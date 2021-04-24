@@ -16,18 +16,22 @@ const AuthBase = ({ isOpen, onClose }: Props) => {
         { label: 'Register', value: 'register' },
     ];
 
-    const handleTabs = (value: number) => {
+    const handleTabs = (value: number): void => {
         setTab(value);
+    };
+    const handleClose = (): void => {
+        onClose();
+        setTab(0);
     };
 
     return (
         <Modal
             isOpen={isOpen}
-            onClose={onClose}
+            onClose={handleClose}
         >
             <ModalOverlay />
             <ModalContent>
-                <Tabs isFitted variant="enclosed" onChange={handleTabs} >
+                <Tabs isFitted variant="enclosed" onChange={handleTabs} defaultValue={tab} >
                     <TabList mb="1em">
                         {tabs.map(tab => <Tab value={tab.value} key={tab.value} >{tab.label}</Tab>)}
                     </TabList>

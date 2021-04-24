@@ -30,7 +30,7 @@ const Register = () => {
     return (
         <ModalBody>
             <form>
-                {inputs.map(input => <FormControl isRequired>
+                {inputs.map(input => <FormControl isRequired mb="2.5">
                     <FormLabel>{input.label}</FormLabel>
                     <Input placeholder={input.label} name={input.name} type={input.type} />
                 </FormControl>)}
