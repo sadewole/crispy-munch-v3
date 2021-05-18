@@ -6,6 +6,7 @@
     "@chakra-ui/react": "^1.5.2",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
+    "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^10.4.9",
     "@testing-library/user-event": "^12.8.3",
@@ -13,16 +14,21 @@
     "@types/node": "^12.20.10",
     "@types/react": "^16.14.5",
     "@types/react-dom": "^16.9.12",
+    "formik": "^2.2.6",
     "framer-motion": "^4.1.6",
+    "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^3.11.0",
+    "react-redux": "^7.2.4",
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.0",
     "typed.js": "^2.0.12",
     "typescript": "^3.9.9",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,6 +52,9 @@
     ]
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/react-redux": "^7.1.16",
+    "@types/redux": "^3.6.0",
     "eslint-config-airbnb": "^18.2.1"
   }
 }
