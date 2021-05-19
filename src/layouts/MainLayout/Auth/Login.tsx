@@ -38,7 +38,11 @@ const inputs: Array<inputType> = [
   },
 ];
 
-const Login = () => {
+type LoginProps = {
+  handleClose: () => void;
+};
+
+const Login = ({ handleClose }: LoginProps) => {
   const { setAuthState } = useAuth();
   const [state, setState] = useState<inputState>({
     email: '',
@@ -73,6 +77,7 @@ const Login = () => {
               }));
               setStatus({ success });
               resetForm();
+              handleClose();
             })
             .catch((err) => {
               setErrors({ submit: err.message });
