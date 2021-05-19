@@ -1,10 +1,13 @@
 import { Button } from '@chakra-ui/button';
-import { FormControl, FormLabel } from '@chakra-ui/form-control';
-import { Text } from '@chakra-ui/layout';
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+} from '@chakra-ui/form-control';
+import { Alert, AlertIcon, AlertDescription } from '@chakra-ui/react';
 import { Input } from '@chakra-ui/input';
 import { ModalBody } from '@chakra-ui/modal';
 import React, { useState } from 'react';
-// import axios from 'axios';
 import axios from 'src/utils/axios';
 import { useAuth, setSession } from 'src/context/authContext';
 import { Formik } from 'formik';
@@ -58,37 +61,24 @@ const Login = () => {
           { setStatus, setSubmitting, setErrors, resetForm }
         ) => {
           const { email, password } = values;
-          console.log(email, password);
-
-          //     fetch(
-          //       'https://crispy-munch-v3-backend.herokuapp.com/api/v1/user/signin',
-          //       {
-          //         method: 'POST',
-          //         body: JSON.stringify({ email, password }),
-          //          headers: {
-          //   'Content-Type': 'application/json',
-          // },
-          //       }
-          //     )
-          //       .then((res) => res.json())
-          //       .then((data) => console.log(data))
-          //       .catch((err) => console.log(err));
 
           axios
             .post('user/signin', JSON.stringify({ email, password }))
-            .then(({ data: { token, data } }) => {
+            .then(({ data: { token, data, success } }) => {
               setSession(token);
               setAuthState((prevState) => ({
                 ...prevState,
                 user: data,
                 isAuthenticated: true,
               }));
-              setStatus({ success: true });
+              setStatus({ success });
               resetForm();
             })
             .catch((err) => {
-              console.log(err);
               setErrors({ submit: err.message });
+              setTimeout(() => {
+                setErrors({ submit: '' });
+              }, 5000);
             })
             .finally(() => setSubmitting(false));
         }}
@@ -105,30 +95,39 @@ const Login = () => {
         }) => (
           <form noValidate onSubmit={handleSubmit}>
             {inputs.map(({ name, type, label }) => (
-              <FormControl isRequired mb='2.5' key={name}>
+              <FormControl
+                isRequired
+                mb='2.5'
+                key={name}
+                isInvalid={Boolean(touched[name] && errors[name])}
+              >
                 <FormLabel>{label}</FormLabel>
                 <Input
                   name={name}
                   type={type}
                   placeholder={label}
                   value={values[name]}
-                  border={
-                    Boolean(touched[name] && errors[name]) ? 'red.500' : ''
-                  }
                   onBlur={handleBlur}
                   onChange={handleChange}
                 />
-
-                <Text color='red.500' m={1}>
+                <FormErrorMessage>
                   {touched[name] && errors[name]}
-                </Text>
+                </FormErrorMessage>
               </FormControl>
             ))}
+            {errors.submit && (
+              <Alert status='error'>
+                <AlertIcon />
+                <AlertDescription>{errors.submit}</AlertDescription>
+              </Alert>
+            )}
             <Button
               bgColor='red.800'
               _hover={{ bg: 'red.900' }}
               color='white'
               width='full'
+              isLoading={isSubmitting}
+              mt={1}
             >
               Login
             </Button>
