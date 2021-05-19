@@ -11,14 +11,14 @@ import jwtDecode from 'jwt-decode';
 // set auth session
 export const setSession = (token: string | null) => {
   if (token) {
-    axios.defaults.headers.token = token;
+    axios.defaults.headers['x-access-token'] = `Bearer ${token}`;
     const crispy_store = JSON.stringify({
       session: token,
     });
     localStorage.setItem('crispy_store', crispy_store);
   } else {
     localStorage.removeItem('crispy_store');
-    delete axios.defaults.headers.token;
+    delete axios.defaults.headers['x-access-token'];
   }
 };
 

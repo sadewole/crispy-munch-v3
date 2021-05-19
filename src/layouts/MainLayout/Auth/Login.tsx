@@ -4,6 +4,7 @@ import { Text } from '@chakra-ui/layout';
 import { Input } from '@chakra-ui/input';
 import { ModalBody } from '@chakra-ui/modal';
 import React, { useState } from 'react';
+// import axios from 'axios';
 import axios from 'src/utils/axios';
 import { useAuth, setSession } from 'src/context/authContext';
 import { Formik } from 'formik';
@@ -59,33 +60,37 @@ const Login = () => {
           const { email, password } = values;
           console.log(email, password);
 
-          fetch(
-            'https://crispy-munch-v3-backend.herokuapp.com/api/v1/user/signin',
-            {
-              method: 'POST',
-              body: JSON.stringify({ email, password }),
-            }
-          )
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            .catch((err) => console.log(err));
-          //   axios
-          //     .post('user/signin', { email, password })
-          //     .then(({ data: { token, data } }) => {
-          //       setSession(token);
-          //       setAuthState((prevState) => ({
-          //         ...prevState,
-          //         user: data,
-          //         isAuthenticated: true,
-          //       }));
-          //       setStatus({ success: true });
-          //       resetForm();
-          //     })
-          //     .catch((err) => {
-          //       console.log(err);
-          //       setErrors({ submit: err.message });
-          //     })
-          //     .finally(() => setSubmitting(false));
+          //     fetch(
+          //       'https://crispy-munch-v3-backend.herokuapp.com/api/v1/user/signin',
+          //       {
+          //         method: 'POST',
+          //         body: JSON.stringify({ email, password }),
+          //          headers: {
+          //   'Content-Type': 'application/json',
+          // },
+          //       }
+          //     )
+          //       .then((res) => res.json())
+          //       .then((data) => console.log(data))
+          //       .catch((err) => console.log(err));
+
+          axios
+            .post('user/signin', JSON.stringify({ email, password }))
+            .then(({ data: { token, data } }) => {
+              setSession(token);
+              setAuthState((prevState) => ({
+                ...prevState,
+                user: data,
+                isAuthenticated: true,
+              }));
+              setStatus({ success: true });
+              resetForm();
+            })
+            .catch((err) => {
+              console.log(err);
+              setErrors({ submit: err.message });
+            })
+            .finally(() => setSubmitting(false));
         }}
       >
         {({
