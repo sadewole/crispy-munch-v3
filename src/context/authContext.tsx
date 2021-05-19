@@ -6,12 +6,11 @@ import React, {
   ReactNode,
 } from 'react';
 import axios from 'src/utils/axios';
-import jwtDecode from 'jwt-decode';
 
 // set auth session
 export const setSession = (token: string | null) => {
   if (token) {
-    axios.defaults.headers['x-access-token'] = `Bearer ${token}`;
+    axios.defaults.headers['x-access-token'] = token;
     const crispy_store = JSON.stringify({
       session: token,
     });
@@ -20,18 +19,6 @@ export const setSession = (token: string | null) => {
     localStorage.removeItem('crispy_store');
     delete axios.defaults.headers['x-access-token'];
   }
-};
-
-// Check valid session
-const isValidToken = (accessToken: string) => {
-  if (!accessToken) {
-    return false;
-  }
-
-  const decoded = jwtDecode(accessToken);
-  const currentTime = Date.now() / 1000;
-  // @ts-ignore
-  return decoded.exp > currentTime;
 };
 
 interface AuthState {
@@ -58,17 +45,17 @@ export const AuthWrapper = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const initUser = () => {
-    const token = window.localStorage.getItem('token');
-
-    if (token && isValidToken(token)) {
-      setSession(token);
+    const crispy_store = window.localStorage.getItem('crispy_store');
+    if (crispy_store) {
+      const { session } = JSON.parse(crispy_store);
+      setSession(session);
 
       axios
         .get('user/me')
         .then(({ data }) => {
           setAuthState((prevState) => ({
             ...prevState,
-            user: data,
+            user: data.data,
             isAuthenticated: true,
           }));
         })

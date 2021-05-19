@@ -64,8 +64,8 @@ const Login = () => {
 
           axios
             .post('user/signin', JSON.stringify({ email, password }))
-            .then(({ data: { token, data, success } }) => {
-              setSession(token);
+            .then(({ data: { data, success } }) => {
+              setSession(data.token);
               setAuthState((prevState) => ({
                 ...prevState,
                 user: data,
