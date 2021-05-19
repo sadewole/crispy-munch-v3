@@ -9,7 +9,7 @@ import axios from 'src/utils/axios';
 import jwtDecode from 'jwt-decode';
 
 // set auth session
-const setSession = (token: string | null) => {
+export const setSession = (token: string | null) => {
   if (token) {
     axios.defaults.headers.token = token;
     const crispy_store = JSON.stringify({
