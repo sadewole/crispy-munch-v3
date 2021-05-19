@@ -85,24 +85,21 @@ const Register = ({ handleClose }: RegisterProps) => {
           axios
             .post('user/signup', JSON.stringify({ ...rest }))
             .then(({ data: { data, success } }) => {
-              console.log('data', data);
-              console.log('success', success);
-              //   setSession(data.token);
-              //   setAuthState((prevState) => ({
-              //     ...prevState,
-              //     user: data,
-              //     isAuthenticated: true,
-              //   }));
-              //   setStatus({ success });
-              //   resetForm();
-              //   handleClose();
+              setSession(data.token);
+              setAuthState((prevState) => ({
+                ...prevState,
+                user: data,
+                isAuthenticated: true,
+              }));
+              setStatus({ success });
+              resetForm();
+              handleClose();
             })
             .catch((err) => {
-              console.log('err', err);
-              //   setErrors({ submit: err.message });
-              //   setTimeout(() => {
-              //     setErrors({ submit: '' });
-              //   }, 5000);
+              setErrors({ submit: err.message });
+              setTimeout(() => {
+                setErrors({ submit: '' });
+              }, 5000);
             })
             .finally(() => setSubmitting(false));
         }}
