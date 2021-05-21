@@ -1,11 +1,12 @@
 import React from 'react';
+import Hero from './Hero';
 
 const ExploreMeals = () => {
-    return (
-        <div>
-            Menu page
-        </div>
-    );
+  return (
+    <div>
+      <Hero />
+    </div>
+  );
 };
 
 export default ExploreMeals;

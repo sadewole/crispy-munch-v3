@@ -14,12 +14,7 @@ const Topbar = ({ toggleLogin }: { toggleLogin: toggleFunc }) => {
     logout,
   } = useAuth();
   return (
-    <Box
-      bg='transparent'
-      py='5'
-      overflow='hidden'
-      marginBottom={{ base: '0', md: '10' }}
-    >
+    <Box bg='transparent' py='5' overflow='hidden'>
       <Container maxWidth='container.xl'>
         <Flex>
           <Box p='2'>
