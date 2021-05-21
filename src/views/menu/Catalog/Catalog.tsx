@@ -3,6 +3,7 @@ import { Box, Container, Grid, Text } from '@chakra-ui/layout';
 import React from 'react';
 import LargeScreenCard from './Cards/LargeScreenCard';
 import MobileCard from './Cards/MobileCard';
+import { Meal } from './models';
 
 import './catalog.css';
 
@@ -25,27 +26,30 @@ const EmptyCatalog = () => (
   </Container>
 );
 
-const Catalog = () => {
+const Catalog = ({ meals }: { meals: any }) => {
   return (
     <Box my='10'>
-      {/* <EmptyCatalog /> */}
-      <Container maxWidth='container.xl'>
-        <Grid
-          templateColumns={{
-            base: '1fr',
-            md: 'repeat(3, 1fr)',
-            lg: 'repeat(4, 1fr)',
-          }}
-          gap={4}
-        >
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Box key={item}>
-              <LargeScreenCard className='smHidden' />
-              <MobileCard className='mdHidden' />
-            </Box>
-          ))}
-        </Grid>
-      </Container>
+      {meals && meals.length ? (
+        <Container maxWidth='container.xl'>
+          <Grid
+            templateColumns={{
+              base: '1fr',
+              md: 'repeat(3, 1fr)',
+              lg: 'repeat(4, 1fr)',
+            }}
+            gap={4}
+          >
+            {meals.map((meal: Meal, index: number) => (
+              <Box key={index}>
+                <LargeScreenCard className='smHidden' meal={meal} />
+                <MobileCard className='mdHidden' meal={meal} />
+              </Box>
+            ))}
+          </Grid>
+        </Container>
+      ) : (
+        <EmptyCatalog />
+      )}
     </Box>
   );
 };

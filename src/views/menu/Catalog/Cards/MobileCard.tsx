@@ -5,7 +5,14 @@ import { currencyFormatter } from 'src/utils/formatter';
 import { Button } from '@chakra-ui/button';
 import { FaCartPlus } from 'react-icons/fa';
 
-export default function MobileCard({ className }: { className: string }) {
+import { Meal } from '../models';
+
+interface CardProps {
+  className: string;
+  meal: Meal;
+}
+
+export default function MobileCard({ className }: CardProps) {
   return (
     <div className={className}>
       <Box bgColor='beige' display='flex' borderRadius='lg'>
