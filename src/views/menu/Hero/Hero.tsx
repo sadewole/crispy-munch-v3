@@ -16,6 +16,7 @@ const Hero = () => {
       display='flex'
       alignItems='center'
       justifyContent='center'
+      overflow='hidden'
     >
       <Box px='4'>
         <Text
