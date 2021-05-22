@@ -3,7 +3,7 @@ import Catalog from './Catalog';
 import Hero from './Hero';
 import { useDispatch, useSelector } from 'src/store';
 import { fetchMeals } from 'src/slices/meal';
-import { Meal } from './Catalog/models';
+import { Meal } from 'src/utils/models';
 import { Image } from '@chakra-ui/image';
 import { Box, Container, Text } from '@chakra-ui/layout';
 
