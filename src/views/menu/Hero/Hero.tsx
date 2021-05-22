@@ -8,7 +8,12 @@ import {
   InputRightElement,
 } from '@chakra-ui/react';
 
-const Hero = () => {
+type HeroProps = {
+  search: string;
+  setSearch: (e: string) => void;
+};
+
+const Hero = ({ setSearch, search }: HeroProps) => {
   return (
     <Box
       position='relative'
@@ -27,17 +32,26 @@ const Hero = () => {
           Your desired MEAL within your reach{' '}
         </Text>
         <InputGroup size='lg'>
-          <Input pr='4.5rem' type='text' placeholder='Search catalog...' />
+          <Input
+            pr='4.5rem'
+            type='text'
+            value={search}
+            placeholder='Search catalog...'
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <InputRightElement width='5rem'>
-            <Button
-              h='2.5rem'
-              size='sm'
-              bgColor='red.800'
-              _hover={{ bg: 'red.900' }}
-              color='white'
-            >
-              Search
-            </Button>
+            {search && (
+              <Button
+                h='2.5rem'
+                size='sm'
+                bgColor='red.800'
+                _hover={{ bg: 'red.900' }}
+                color='white'
+                onClick={() => setSearch('')}
+              >
+                Clear
+              </Button>
+            )}
           </InputRightElement>
         </InputGroup>
       </Box>

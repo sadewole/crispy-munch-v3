@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from '@chakra-ui/image';
 import { Box, Text } from '@chakra-ui/layout';
+import { Badge } from '@chakra-ui/react';
 import { currencyFormatter } from 'src/utils/formatter';
 import { Button } from '@chakra-ui/button';
 import { FaCartPlus } from 'react-icons/fa';
@@ -12,16 +13,21 @@ interface CardProps {
   meal: Meal;
 }
 
-export default function MobileCard({ className }: CardProps) {
+export default function MobileCard({ className, meal }: CardProps) {
   return (
     <div className={className}>
       <Box bgColor='beige' display='flex' borderRadius='lg'>
-        <Image src='./images/spicy-1.jpg' minHeight='100px' maxWidth='40%' />
+        <Image src={meal.image} minHeight='100px' maxWidth='40%' />
         <Box p='2' flexGrow={1} minWidth='200px'>
           <Text fontSize='lg' fontWeight='bold'>
-            Eba and Fufu
+            {meal.name}
           </Text>
-          <Text>{currencyFormatter(200)}</Text>
+          {!meal.available && (
+            <Badge my='1' colorScheme='red'>
+              Not available
+            </Badge>
+          )}
+          <Text>{currencyFormatter(meal.price)}</Text>
           <Button
             leftIcon={<FaCartPlus />}
             bgColor='red.800'

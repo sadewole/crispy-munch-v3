@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Catalog from './Catalog';
 import Hero from './Hero';
 import { useDispatch, useSelector } from 'src/store';
 import { fetchMeals } from 'src/slices/meal';
+import { Meal } from './Catalog/models';
 
 const ExploreMeals = () => {
+  const [search, setSearch] = useState<string>('');
   const dispatch = useDispatch();
   // @ts-ignore
   const { allMeal } = useSelector((state) => state.meal);
@@ -13,12 +15,19 @@ const ExploreMeals = () => {
     dispatch(fetchMeals());
   }, [dispatch]);
 
-  console.log(allMeal);
+  const meals = allMeal.filter((meal: Meal) =>
+    meal.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div>
-      <Hero />
-      <Catalog meals={allMeal} />
+      <Hero
+        setSearch={(e: string) => {
+          setSearch(e);
+        }}
+        search={search}
+      />
+      <Catalog meals={meals} />
     </div>
   );
 };
