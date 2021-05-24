@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/layout';
+import { Box, Text } from '@chakra-ui/layout';
 import {
   Table,
   Thead,
@@ -8,6 +8,7 @@ import {
   Td,
   IconButton,
   Image,
+  Button,
 } from '@chakra-ui/react';
 import { FaTrash } from 'react-icons/fa';
 import React from 'react';
@@ -19,7 +20,7 @@ const CartList = ({ carts }: { carts: Array<Cart> }) => {
   return (
     <Box>
       <Box bgColor='beige' overflow='hidden' borderRadius='base' p='4'>
-        <Table variant='simple'>
+        <Table variant="simple">
           <Thead>
             <Tr>
               <Th>Food Item</Th>
@@ -48,6 +49,10 @@ const CartList = ({ carts }: { carts: Array<Cart> }) => {
             ))}
           </Tbody>
         </Table>
+      </Box>
+      <Box my='10' float='right'>
+        <Text fontSize='3xl'>Total: {currencyFormatter(5500)}</Text>
+        <Button colorScheme='red'>Proceed to checkout</Button>
       </Box>
     </Box>
   );
