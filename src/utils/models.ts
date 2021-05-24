@@ -6,12 +6,24 @@ export interface Meal {
   price: number;
   _id: string;
 }
-
-export interface Cart {
+interface Cart {
   amount: number;
   mealId: string;
   payment: boolean;
   quantity: number;
   userId: string;
   _id: string;
+}
+
+interface Food {
+  available: boolean;
+  data: string;
+  image: string;
+  name: string;
+  price: string;
+}
+
+export interface CartList {
+  cart: Cart;
+  food: Food;
 }

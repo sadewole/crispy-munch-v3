@@ -4,8 +4,6 @@ import LargeScreenCard from './Cards/LargeScreenCard';
 import MobileCard from './Cards/MobileCard';
 import { Meal } from '../../../utils/models';
 
-import './catalog.css';
-
 const Catalog = ({ meals }: { meals: Array<Meal> }) => {
   return (
     <Container maxWidth='container.xl'>

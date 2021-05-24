@@ -1,61 +1,78 @@
 import { Box, Text } from '@chakra-ui/layout';
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  IconButton,
-  Image,
-  Button,
-} from '@chakra-ui/react';
-import { FaTrash } from 'react-icons/fa';
+import { Button, useToast } from '@chakra-ui/react';
 import React from 'react';
-
-import { Cart } from 'src/utils/models';
+import { useDispatch } from 'src/store';
+import { updateQuantity } from 'src/slices/order';
+import { CartList } from 'src/utils/models';
 import { currencyFormatter } from 'src/utils/formatter';
+import PermissionModal from './PermissionModal';
+import LargeScreen from './MediaQuery/LargeScreen';
+import MobileScreen from './MediaQuery/MobileScreen';
 
-const CartList = ({ carts }: { carts: Array<Cart> }) => {
+const CartLists = ({ carts }: { carts: Array<CartList> }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [removeItem, setRemoveItem] = React.useState({
+    id: '',
+    name: '',
+  });
+  const toast = useToast();
+  const dispatch = useDispatch();
+
+  const updateCart = async (id: string, quantity: string | number) => {
+    const responseMessage = await dispatch(updateQuantity(id, quantity));
+    if (responseMessage) {
+      toast({
+        position: 'top-right',
+        description: responseMessage,
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
+
+  const total = carts.reduce((a, b) => a + b.cart.amount, 0);
+  const handleClose = () => {
+    setIsOpen(false);
+    setRemoveItem({
+      id: '',
+      name: '',
+    });
+  };
+  const handleOpen = (cart: any, food: any) => {
+    setRemoveItem({
+      id: cart._id,
+      name: food.name,
+    });
+
+    setIsOpen(true);
+  };
+
   return (
     <Box>
-      <Box bgColor='beige' overflow='hidden' borderRadius='base' p='4'>
-        <Table variant="simple">
-          <Thead>
-            <Tr>
-              <Th>Food Item</Th>
-              <Th>Quantity</Th>
-              <Th>Remove</Th>
-              <Th>Unit Price</Th>
-              <Th>Subtotal</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {carts.map((cart) => (
-              <Tr key={cart._id}>
-                <Td display='flex' alignItems='center'>
-                  <Image width='50px' height='50px' mr='2' />
-                  inches
-                </Td>
-                <Td>millimetres (mm)</Td>
-                <Td>
-                  <IconButton aria-label='Delete item' color='red'>
-                    <FaTrash />
-                  </IconButton>
-                </Td>
-                <Th>{currencyFormatter(cart.amount)}</Th>
-                <Th>Subtotal</Th>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </Box>
+      <LargeScreen
+        carts={carts}
+        updateCart={updateCart}
+        handleOpen={handleOpen}
+        className='smHidden'
+      />
+      <MobileScreen
+        carts={carts}
+        updateCart={updateCart}
+        handleOpen={handleOpen}
+        className='mdHidden'
+      />
       <Box my='10' float='right'>
-        <Text fontSize='3xl'>Total: {currencyFormatter(5500)}</Text>
+        <Text fontSize='3xl'>Total: {currencyFormatter(total)}</Text>
         <Button colorScheme='red'>Proceed to checkout</Button>
       </Box>
+      <PermissionModal
+        isOpen={isOpen}
+        onClose={handleClose}
+        removeItem={removeItem}
+      />
     </Box>
   );
 };
 
-export default CartList;
+export default CartLists;

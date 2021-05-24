@@ -43,7 +43,6 @@ const Cart = () => {
     dispatch(fetchCart());
   }, [dispatch, isAuthenticated]);
 
-  console.log(carts);
   return (
     <div>
       <Container maxWidth='container.lg'>

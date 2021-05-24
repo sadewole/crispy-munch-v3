@@ -4,6 +4,8 @@ import { ChakraProvider, theme } from '@chakra-ui/react';
 import { AuthWrapper } from 'src/context/authContext';
 import routes from './routes';
 
+import './app.css';
+
 export const App = () => {
   const routing = useRoutes(routes);
 
