@@ -1,5 +1,6 @@
 import { Container } from '@chakra-ui/layout';
 import React, { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'src/store';
 import { fetchCart } from 'src/slices/order';
 import { fetchUserProfile } from 'src/slices/user';
@@ -24,6 +25,10 @@ const Review = () => {
     dispatch(fetchCart());
     dispatch(fetchUserProfile());
   }, [dispatch, isAuthenticated]);
+
+  if (!carts.length) {
+    return <Navigate to='/menu' />;
+  }
 
   return (
     <Container maxWidth='container.lg'>
