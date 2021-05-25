@@ -26,7 +26,7 @@ const Review = () => {
     dispatch(fetchUserProfile());
   }, [dispatch, isAuthenticated]);
 
-  if (!carts.length) {
+  if (!loadingA && !carts.length) {
     return <Navigate to='/menu' />;
   }
 

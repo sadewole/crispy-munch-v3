@@ -16,7 +16,7 @@ const Payment: React.FC<PaymentProps> = ({ carts, user, editProfile }) => {
   const total = carts.reduce((a: number, b: any) => a + b?.cart?.amount, 0);
   const config = {
     reference: new Date().getTime(),
-    email: user.email,
+    email: user?.email,
     amount: (total + 100) * 100,
     publicKey: process.env.REACT_APP_PAYSTACK_KEY,
   };
