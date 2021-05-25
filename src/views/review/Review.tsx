@@ -31,17 +31,19 @@ const Review = () => {
   }
 
   return (
-    <Container maxWidth='container.lg'>
-      <Profile
-        profile={profile}
-        user={user}
-        loading={loadingB}
-        editProfile={editProfile}
-        setEditProfile={setEditProfile}
-      />
-      <Summary carts={carts} loading={loadingA} />
-      <Payment editProfile={editProfile} user={user} carts={carts} />
-    </Container>
+    <div>
+      <Container maxWidth='container.lg'>
+        <Profile
+          profile={profile}
+          user={user}
+          loading={loadingB}
+          editProfile={editProfile}
+          setEditProfile={setEditProfile}
+        />
+        <Summary carts={carts} loading={loadingA} />
+        <Payment editProfile={editProfile} user={user} carts={carts} />
+      </Container>
+    </div>
   );
 };
 

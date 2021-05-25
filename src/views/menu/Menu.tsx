@@ -43,7 +43,7 @@ const ExploreMeals = () => {
   const [search, setSearch] = useState<string>('');
   const dispatch = useDispatch();
   // @ts-ignore
-  const { allMeal } = useSelector((state) => state.meal);
+  const { allMeal, loading } = useSelector((state) => state.meal);
 
   let emptyCatalog: EmptyCatalogProps = noMeal;
 
@@ -70,7 +70,9 @@ const ExploreMeals = () => {
         search={search}
       />
       <Box my='10'>
-        {meals && meals.length ? (
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : meals && meals.length ? (
           <Catalog meals={meals} />
         ) : (
           <EmptyCatalog {...emptyCatalog} />
