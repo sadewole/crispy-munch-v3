@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/layout';
-import { Image, Table, Tr, Td } from '@chakra-ui/react';
+import { Image, Table, Tr, Td, Tbody, Spinner } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import { CartList } from 'src/utils/models';
 import { currencyFormatter } from 'src/utils/formatter';
@@ -17,23 +17,27 @@ const Summary: FC<SummaryProps> = ({ carts, loading }) => {
       </Text>
       <Box bgColor='beige' overflow='hidden' borderRadius='base' p='3'>
         {loading ? (
-          <h1>Loading...</h1>
+          <Box display='flex' alignItems='center' justifyContent='center'>
+            <Spinner color='red.500' />
+          </Box>
         ) : (
           <Table>
-            {carts.map(({ cart, food }, index: number) => (
-              <Tr key={index}>
-                <Td display='flex' alignItems='center' flexWrap='wrap'>
-                  <Image width='50px' height='50px' mr='2' src={food.image} />
-                  {food.name}
-                </Td>
-                <Td>
-                  <Text p='2' border='red 1px solid' width='fit-content'>
-                    {cart.quantity}
-                  </Text>
-                </Td>
-                <Td fontSize='lg'>{currencyFormatter(cart.amount)}</Td>
-              </Tr>
-            ))}
+            <Tbody>
+              {carts.map(({ cart, food }, index: number) => (
+                <Tr key={index}>
+                  <Td display='flex' alignItems='center' flexWrap='wrap'>
+                    <Image width='50px' height='50px' mr='2' src={food.image} />
+                    {food.name}
+                  </Td>
+                  <Td>
+                    <Text p='2' border='red 1px solid' width='fit-content'>
+                      {cart.quantity}
+                    </Text>
+                  </Td>
+                  <Td fontSize='lg'>{currencyFormatter(cart.amount)}</Td>
+                </Tr>
+              ))}
+            </Tbody>
           </Table>
         )}
       </Box>
