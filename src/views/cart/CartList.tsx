@@ -33,6 +33,7 @@ const CartLists = ({ carts }: { carts: Array<CartList> }) => {
   };
 
   const total = carts.reduce((a, b) => a + b.cart.amount, 0);
+
   const handleClose = () => {
     setIsOpen(false);
     setRemoveItem({

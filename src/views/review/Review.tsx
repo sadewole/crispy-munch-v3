@@ -6,6 +6,7 @@ import { fetchUserProfile } from 'src/slices/user';
 import { useAuth } from 'src/context/authContext';
 import Profile from './Profile';
 import Summary from './Summary';
+import Payment from './Payment';
 
 const Review = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ const Review = () => {
   // @ts-ignore
   const { profile, loading: loadingB } = useSelector((state) => state.user);
 
+  const [editProfile, setEditProfile] = React.useState(profile?.phone || false);
+
   useEffect(() => {
     dispatch(fetchCart());
     dispatch(fetchUserProfile());
@@ -24,8 +27,15 @@ const Review = () => {
 
   return (
     <Container maxWidth='container.lg'>
-      <Profile profile={profile} user={user} loading={loadingB} />
+      <Profile
+        profile={profile}
+        user={user}
+        loading={loadingB}
+        editProfile={editProfile}
+        setEditProfile={setEditProfile}
+      />
       <Summary carts={carts} loading={loadingA} />
+      <Payment editProfile={editProfile} user={user} carts={carts} />
     </Container>
   );
 };
