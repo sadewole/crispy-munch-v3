@@ -6,22 +6,31 @@ import Footer from './Footer';
 import AuthBase from './Auth';
 
 const MainLayout = () => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    const handleAuthBase = () => { setIsOpen(!isOpen); };
+  const handleAuthBase = () => {
+    setIsOpen(!isOpen);
+  };
 
-    return (
-        <>
-            <Box display="flex" flexDirection="column" width="100%" height="100%" minH="100vh" overflow="hidden">
-                <Topbar toggleLogin={handleAuthBase} />
-                <Box flex={1}>
-                    <Outlet />
-                </Box>
-                <Footer />
-            </Box>
-            <AuthBase isOpen={isOpen} onClose={handleAuthBase} />
-        </>
-    );
+  return (
+    <>
+      <Box
+        display='flex'
+        flexDirection='column'
+        width='100%'
+        height='100%'
+        minH='100vh'
+        overflow='hidden'
+      >
+        <Topbar toggleLogin={handleAuthBase} />
+        <Box flex={1}>
+          <Outlet />
+        </Box>
+        <Footer />
+      </Box>
+      <AuthBase isOpen={isOpen} onClose={handleAuthBase} />
+    </>
+  );
 };
 
 export default MainLayout;

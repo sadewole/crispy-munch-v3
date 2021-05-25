@@ -1,6 +1,7 @@
 import { Box, Text } from '@chakra-ui/layout';
 import { Button, useToast } from '@chakra-ui/react';
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { useDispatch } from 'src/store';
 import { updateQuantity } from 'src/slices/order';
 import { CartList } from 'src/utils/models';
@@ -18,7 +19,7 @@ const CartLists = ({ carts }: { carts: Array<CartList> }) => {
   const toast = useToast();
   const dispatch = useDispatch();
 
-  const updateCart = async (id: string, quantity: string | number) => {
+  const updateCart = async (id: string, quantity: number) => {
     const responseMessage = await dispatch(updateQuantity(id, quantity));
     if (responseMessage) {
       toast({
@@ -64,7 +65,9 @@ const CartLists = ({ carts }: { carts: Array<CartList> }) => {
       />
       <Box my='10' float='right'>
         <Text fontSize='3xl'>Total: {currencyFormatter(total)}</Text>
-        <Button colorScheme='red'>Proceed to checkout</Button>
+        <Button colorScheme='red' as={RouterLink} to='/cart/review'>
+          Proceed to checkout
+        </Button>
       </Box>
       <PermissionModal
         isOpen={isOpen}
