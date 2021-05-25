@@ -1,17 +1,23 @@
 import { Box, Link, Text } from '@chakra-ui/layout';
 import { Spinner } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React from 'react';
 import ProfileForm from './ProfileForm';
 
 type ProfileProps = {
   profile: { phone: string; address: string };
   user: any;
   loading: boolean;
+  editProfile: string | boolean;
+  setEditProfile: React.Dispatch<React.SetStateAction<string | boolean>>;
 };
 
-const Profile: React.FC<ProfileProps> = ({ profile, user, loading }) => {
-  const [editProfile, setEditProfile] = useState(profile?.phone || false);
-
+const Profile: React.FC<ProfileProps> = ({
+  profile,
+  user,
+  loading,
+  editProfile,
+  setEditProfile,
+}) => {
   return (
     <Box my='4'>
       <Text fontWeight='bold' fontSize='2xl' mb='2'>
