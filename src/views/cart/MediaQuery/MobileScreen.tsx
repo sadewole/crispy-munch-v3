@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/layout';
-import { IconButton, Image, Button, Divider, useToast } from '@chakra-ui/react';
+import { IconButton, Image, Button, Divider } from '@chakra-ui/react';
 import { FaTrash } from 'react-icons/fa';
 import React, { FC } from 'react';
 import { Props } from './model';

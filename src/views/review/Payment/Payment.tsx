@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/button';
 import { Box, Text } from '@chakra-ui/layout';
 import React from 'react';
 import { usePaystackPayment } from 'react-paystack';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'src/utils/axios';
 import { currencyFormatter } from 'src/utils/formatter';
 
@@ -13,6 +13,7 @@ type PaymentProps = {
 };
 
 const Payment: React.FC<PaymentProps> = ({ carts, user, editProfile }) => {
+  const navigate = useNavigate();
   const total = carts.reduce((a: number, b: any) => a + b?.cart?.amount, 0);
   const config = {
     reference: new Date().getTime(),
@@ -24,9 +25,8 @@ const Payment: React.FC<PaymentProps> = ({ carts, user, editProfile }) => {
   const onSuccess = (reference: any) => {
     console.log(reference);
     axios.post('order/payment').then(() => {
-      console.log('payment successfully');
+      navigate('/menu', { replace: true });
     });
-    return <Navigate to='/menu' />;
   };
 
   const onClose = () => {
