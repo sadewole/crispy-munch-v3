@@ -66,7 +66,7 @@ const UserDropdown = ({ user, logout }: UserDropdownProps) => {
           listStyleType='none'
           textAlign='left'
         >
-          <RouterLink to='/'>
+          <RouterLink to='/customer/account'>
             <ListItem
               bg='transparent'
               _hover={{ bg: 'gray.200' }}
@@ -82,7 +82,7 @@ const UserDropdown = ({ user, logout }: UserDropdownProps) => {
               <Text mx='2'>Account</Text>
             </ListItem>
           </RouterLink>
-          <RouterLink to='/'>
+          <RouterLink to='/customer/order'>
             <ListItem
               bg='transparent'
               _hover={{ bg: 'gray.200' }}

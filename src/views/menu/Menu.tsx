@@ -6,6 +6,7 @@ import { fetchMeals } from 'src/slices/meal';
 import { Meal } from 'src/utils/models';
 import { Image } from '@chakra-ui/image';
 import { Box, Container, Text } from '@chakra-ui/layout';
+import Page from 'src/components/Page';
 
 type EmptyCatalogProps = {
   headText: string;
@@ -62,7 +63,7 @@ const ExploreMeals = () => {
   }
 
   return (
-    <div>
+    <Page title='Menu'>
       <Hero
         setSearch={(e: string) => {
           setSearch(e);
@@ -78,7 +79,7 @@ const ExploreMeals = () => {
           <EmptyCatalog {...emptyCatalog} />
         )}
       </Box>
-    </div>
+    </Page>
   );
 };
 

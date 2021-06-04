@@ -8,6 +8,7 @@ import { useAuth } from 'src/context/authContext';
 import Profile from './Profile';
 import Summary from './Summary';
 import Payment from './Payment';
+import Page from 'src/components/Page';
 
 const Review = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const Review = () => {
   }
 
   return (
-    <div>
+    <Page title='Cart Review'>
       <Container maxWidth='container.lg'>
         <Profile
           profile={profile}
@@ -43,7 +44,7 @@ const Review = () => {
         <Summary carts={carts} loading={loadingA} />
         <Payment editProfile={editProfile} user={user} carts={carts} />
       </Container>
-    </div>
+    </Page>
   );
 };
 

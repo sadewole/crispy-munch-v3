@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'src/store';
 import { fetchCart } from 'src/slices/order';
 import CartList from './CartList';
 import { useAuth } from 'src/context/authContext';
+import Page from 'src/components/Page';
 
 const EmptyCart = () => (
   <Box
@@ -44,7 +45,7 @@ const Cart = () => {
   }, [dispatch, isAuthenticated]);
 
   return (
-    <div>
+    <Page title='Carts'>
       <Container maxWidth='container.lg'>
         <Text fontSize='3xl'>Cart</Text>
         <Box my='10'>
@@ -57,7 +58,7 @@ const Cart = () => {
           )}
         </Box>
       </Container>
-    </div>
+    </Page>
   );
 };
 
