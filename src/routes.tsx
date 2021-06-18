@@ -22,7 +22,14 @@ const routes = [
         element: <Account />,
         children: [
           { path: '/account', element: <Customer.Account /> },
-          { path: '/order', element: <Customer.Order /> },
+          {
+            path: '/order/:labelId',
+            element: <Customer.Order />,
+          },
+          {
+            path: '/order',
+            element: <Navigate to='/customer/order/order-history' />,
+          },
           { path: '/', element: <Navigate to='/customer/account' /> },
         ],
       },
