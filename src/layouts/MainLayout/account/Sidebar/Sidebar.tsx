@@ -8,23 +8,34 @@ import { useAuth } from 'src/context/authContext';
 const Sidebar = () => {
   const { logout } = useAuth();
   return (
-    <Box w='250px' bgColor='beige' overflow='hidden' borderRadius='base' py='4'>
+    <Box
+      w={{ base: '100%', md: '250px' }}
+      bgColor='beige'
+      overflow='hidden'
+      mb='4'
+      borderRadius='base'
+      py='4'
+    >
       <List spacing={3}>
-        <RouterLink to='/customer/account'>
+        <RouterLink to='/customer/account' activeClassName='activeAccLink'>
           <ListItem p='3' _hover={{ backgroundColor: 'gray.100' }}>
             <ListIcon as={FiUser} color='green.500' />
             Account
           </ListItem>
         </RouterLink>
-        <RouterLink to='/customer/order'>
+        <RouterLink to='/customer/order' activeClassName='activeAccLink'>
           <ListItem p='3' _hover={{ backgroundColor: 'gray.100' }}>
             <ListIcon as={FiInbox} color='green.500' />
             Order
           </ListItem>
         </RouterLink>
-        <Divider />
+        <Divider display={{ base: 'none', md: 'block' }} />
         <RouterLink to='/' onClick={() => logout()}>
-          <ListItem p='3' _hover={{ backgroundColor: 'gray.100' }}>
+          <ListItem
+            p='3'
+            _hover={{ backgroundColor: 'gray.100' }}
+            display={{ base: 'none', md: 'block' }}
+          >
             <ListIcon as={FiLogOut} color='green.500' />
             Logout
           </ListItem>

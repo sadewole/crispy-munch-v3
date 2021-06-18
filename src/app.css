@@ -6,6 +6,10 @@
   display: block;
 }
 
+.activeAccLink li {
+  background-color: #e2e8f0;
+}
+
 @media screen and (min-width: 550px) {
   .smHidden {
     display: block;
