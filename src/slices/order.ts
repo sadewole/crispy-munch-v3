@@ -6,10 +6,12 @@ import { CartList } from 'src/utils/models';
 type initialStateProps = {
   carts: CartList[];
   loading: boolean;
+  paymentHistory: [];
 };
 
 const initialState: initialStateProps = {
   carts: [],
+  paymentHistory: [],
   loading: true,
 };
 
@@ -30,6 +32,9 @@ const slice = createSlice({
       state.carts = state.carts.filter(
         ({ cart }) => cart._id !== action.payload
       );
+    },
+    orderPaymentHistory(state, action) {
+      state.paymentHistory = action.payload;
     },
   },
 });
@@ -70,6 +75,20 @@ export const removeOrder = (id: string) => async (dispatch: Dispatch) => {
 
     if (response.status === 200) {
       dispatch(slice.actions.removeOrder(id));
+    }
+    return;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const orderPaymentHistory = () => async (dispatch: Dispatch) => {
+  try {
+    const response = await axios.get(`/user/payment_history`);
+
+    if (response.status === 200) {
+      console.log(response.data.data);
+      // dispatch(slice.actions.orderPaymentHistory(response.data.data));
     }
     return;
   } catch (error) {

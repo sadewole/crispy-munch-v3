@@ -9,7 +9,7 @@ import { Box, Divider, Grid, Text } from '@chakra-ui/layout';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import { Spinner } from '@chakra-ui/spinner';
 import { useAuth } from 'src/context/authContext';
-import { fetchUserProfile } from 'src/slices/user';
+import { orderPaymentHistory } from 'src/slices/order';
 import { useDispatch, useSelector } from 'src/store';
 import OrderHistory from './OrderHistory';
 import OpenOrder from './OpenOrder';
@@ -17,6 +17,10 @@ import OpenOrder from './OpenOrder';
 const Order = () => {
   const { labelId } = useParams();
   const location = useLocation();
+  const dispatch = useDispatch();
+  const {
+    authState: { isAuthenticated },
+  } = useAuth();
   const [tab, setTab] = useState<number>(0);
 
   const [tabs, setTabs] = useState([
@@ -39,6 +43,10 @@ const Order = () => {
       }
     });
   }, [location, tabs]);
+
+  useEffect(() => {
+    dispatch(orderPaymentHistory());
+  }, [dispatch, isAuthenticated]);
 
   const handleTabs = (value: number): void => {
     setTab(value);
