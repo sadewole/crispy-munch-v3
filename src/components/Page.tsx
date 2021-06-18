@@ -9,9 +9,10 @@ type PageProps = {
 type Ref = HTMLDivElement;
 
 const Page = forwardRef<Ref, PageProps>(({ children, title = '' }, ref) => {
-  const description = "crispy munch is an full stack application that allow customer order for food and food vendor can see all orders and deliver them."
+  const description =
+    'crispy munch is an full stack application that allow customer order for food and food vendor can see all orders and deliver them.';
 
-    /**
+  /**
    * Meta Tags
    */
 
@@ -23,16 +24,16 @@ const Page = forwardRef<Ref, PageProps>(({ children, title = '' }, ref) => {
     { property: 'og:title', content: title },
     { property: 'og:description', content: description },
     { property: 'og:type', content: 'website' },
-    { property: 'og:site_name', content: "Crispy Munch" },
+    { property: 'og:site_name', content: 'Crispy Munch' },
     // { property: 'og:image', content: thumbnailUrl },
 
     { name: 'twitter:card', content: 'summary' },
-    { name: 'twitter:site', content: "Crispy Munch" },
+    { name: 'twitter:site', content: 'Crispy Munch' },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
-    { name: 'twitter:creator', content: "https://twitter.com/samador9" }
-  ]
-  
+    { name: 'twitter:creator', content: 'https://twitter.com/samador9' },
+  ];
+
   return (
     <div ref={ref}>
       <Helmet
@@ -40,7 +41,7 @@ const Page = forwardRef<Ref, PageProps>(({ children, title = '' }, ref) => {
           lang: 'en',
         }}
         title={title}
-        titleTemplate={`%s | ${title}`}
+        titleTemplate={`%s | Crispy Munch`}
         meta={metaTags}
       />
       {children}

@@ -23,11 +23,9 @@ const Profile: React.FC<ProfileProps> = ({
       <Text fontWeight='bold' fontSize='2xl' mb='2'>
         Your Delivery Details
       </Text>
-      {!editProfile && (
-        <Link color='blue' onClick={() => setEditProfile(true)}>
-          change address
-        </Link>
-      )}
+      <Link color='blue' onClick={() => setEditProfile(!editProfile)}>
+        {editProfile ? 'close' : 'change address'}
+      </Link>
       <Box bgColor='beige' overflow='hidden' borderRadius='base' p='3'>
         {loading ? (
           <Box display='flex' alignItems='center' justifyContent='center'>

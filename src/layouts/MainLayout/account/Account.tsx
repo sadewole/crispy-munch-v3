@@ -8,7 +8,7 @@ import Sidebar from './Sidebar';
 const Account = () => {
   return (
     <Page title='Account'>
-      <Container maxWidth='container.lg'>
+      <Container maxWidth='container.lg' mb='40'>
         <HStack spacing='20px' alignItems='flex-start'>
           <Sidebar />
           <Box

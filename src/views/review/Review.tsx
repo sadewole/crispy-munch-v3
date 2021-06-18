@@ -20,7 +20,9 @@ const Review = () => {
   // @ts-ignore
   const { profile, loading: loadingB } = useSelector((state) => state.user);
 
-  const [editProfile, setEditProfile] = React.useState(profile?.phone || false);
+  const [editProfile, setEditProfile] = React.useState(
+    profile?.length || false
+  );
 
   useEffect(() => {
     dispatch(fetchCart());
