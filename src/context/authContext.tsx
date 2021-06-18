@@ -5,6 +5,7 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
+import SplashScreen from 'src/components/SplashScreen';
 import axios from 'src/utils/axios';
 
 // set auth session
@@ -87,6 +88,9 @@ export const AuthWrapper = ({ children }: { children: ReactNode }) => {
     setSession(null);
   };
 
+  if (loading) {
+    return <SplashScreen />;
+  }
   return (
     <AuthContext.Provider value={{ authState, setAuthState, logout, loading }}>
       {children}
