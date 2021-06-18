@@ -7,6 +7,7 @@ import CartList from './CartList';
 import { useAuth } from 'src/context/authContext';
 import Page from 'src/components/Page';
 import { Spinner } from '@chakra-ui/spinner';
+import AuthGuard from 'src/components/Guard/AuthGuard';
 
 const EmptyCart = () => (
   <Box
@@ -41,27 +42,29 @@ const Cart = () => {
   }, [dispatch, isAuthenticated]);
 
   return (
-    <Page title='Carts'>
-      <Container maxWidth='container.lg'>
-        <Text fontSize='3xl'>Cart</Text>
-        <Box my='10'>
-          {loading && !carts.length ? (
-            <Box
-              mt='4'
-              display='flex'
-              alignItems='center'
-              justifyContent='center'
-            >
-              <Spinner speed='1s' size='lg' color='red.500' thickness='4px' />
-            </Box>
-          ) : carts && carts.length ? (
-            <CartList carts={carts} />
-          ) : (
-            <EmptyCart />
-          )}
-        </Box>
-      </Container>
-    </Page>
+    <AuthGuard>
+      <Page title='Carts'>
+        <Container maxWidth='container.lg'>
+          <Text fontSize='3xl'>Cart</Text>
+          <Box my='10'>
+            {loading && !carts.length ? (
+              <Box
+                mt='4'
+                display='flex'
+                alignItems='center'
+                justifyContent='center'
+              >
+                <Spinner speed='1s' size='lg' color='red.500' thickness='4px' />
+              </Box>
+            ) : carts && carts.length ? (
+              <CartList carts={carts} />
+            ) : (
+              <EmptyCart />
+            )}
+          </Box>
+        </Container>
+      </Page>
+    </AuthGuard>
   );
 };
 
