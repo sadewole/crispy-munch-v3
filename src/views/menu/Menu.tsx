@@ -7,6 +7,7 @@ import { Meal } from 'src/utils/models';
 import { Image } from '@chakra-ui/image';
 import { Box, Container, Text } from '@chakra-ui/layout';
 import Page from 'src/components/Page';
+import { Spinner } from '@chakra-ui/spinner';
 
 type EmptyCatalogProps = {
   headText: string;
@@ -71,8 +72,15 @@ const ExploreMeals = () => {
         search={search}
       />
       <Box my='10'>
-        {loading ? (
-          <h1>Loading...</h1>
+        {loading && !meals.length ? (
+          <Box
+            mt='4'
+            display='flex'
+            alignItems='center'
+            justifyContent='center'
+          >
+            <Spinner speed='1s' size='lg' color='red.500' thickness='4px' />
+          </Box>
         ) : meals && meals.length ? (
           <Catalog meals={meals} />
         ) : (

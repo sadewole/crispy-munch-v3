@@ -27,3 +27,15 @@ export interface CartList {
   cart: Cart;
   food: Food;
 }
+
+export interface paymentHistory {
+  id: string;
+  orders: [
+    {
+      food: Food;
+      order: Cart;
+    }
+  ];
+  paymentDate: string;
+  status: string;
+}

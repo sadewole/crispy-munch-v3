@@ -1,17 +1,17 @@
 import { Dispatch } from 'redux';
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'src/utils/axios';
-import { CartList } from 'src/utils/models';
+import { CartList, paymentHistory } from 'src/utils/models';
 
 type initialStateProps = {
   carts: CartList[];
   loading: boolean;
-  paymentHistory: [];
+  paymentHistories: paymentHistory[];
 };
 
 const initialState: initialStateProps = {
   carts: [],
-  paymentHistory: [],
+  paymentHistories: [],
   loading: true,
 };
 
@@ -34,7 +34,7 @@ const slice = createSlice({
       );
     },
     orderPaymentHistory(state, action) {
-      state.paymentHistory = action.payload;
+      state.paymentHistories = action.payload;
     },
   },
 });
@@ -87,8 +87,7 @@ export const orderPaymentHistory = () => async (dispatch: Dispatch) => {
     const response = await axios.get(`/user/payment_history`);
 
     if (response.status === 200) {
-      console.log(response.data.data);
-      // dispatch(slice.actions.orderPaymentHistory(response.data.data));
+      dispatch(slice.actions.orderPaymentHistory(response.data.data));
     }
     return;
   } catch (error) {

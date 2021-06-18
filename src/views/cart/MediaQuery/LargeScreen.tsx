@@ -43,7 +43,13 @@ const LargeScreen: FC<Props> = ({
           {carts.map(({ cart, food }, index: number) => (
             <Tr key={index}>
               <Td display='flex' alignItems='center'>
-                <Image width='50px' height='50px' mr='2' src={food.image} />
+                <Image
+                  width='50px'
+                  height='50px'
+                  mr='2'
+                  src={food.image}
+                  alt={food.name}
+                />
                 {food.name}
               </Td>
               <Td>

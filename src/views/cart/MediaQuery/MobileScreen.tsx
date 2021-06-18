@@ -23,7 +23,13 @@ const MobileScreen: FC<Props> = ({
           mb='4'
         >
           <Box display='flex' alignItems='flex-start'>
-            <Image width='50px' height='50px' mr='2' src={food.image} />
+            <Image
+              width='50px'
+              height='50px'
+              mr='2'
+              src={food.image}
+              alt={food.name}
+            />
             <Box>
               <Text fontSize='lg'>{food.name}</Text>
               <Text fontSize=''>{currencyFormatter(cart.amount)}</Text>

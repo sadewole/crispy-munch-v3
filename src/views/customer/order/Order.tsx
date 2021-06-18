@@ -5,11 +5,10 @@ import {
   useLocation,
 } from 'react-router-dom';
 import Page from 'src/components/Page';
-import { Box, Divider, Grid, Text } from '@chakra-ui/layout';
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
-import { Spinner } from '@chakra-ui/spinner';
+import { Box } from '@chakra-ui/layout';
+import { Tabs, TabList, Tab } from '@chakra-ui/react';
 import { useAuth } from 'src/context/authContext';
-import { orderPaymentHistory } from 'src/slices/order';
+import { orderPaymentHistory, fetchCart } from 'src/slices/order';
 import { useDispatch, useSelector } from 'src/store';
 import OrderHistory from './OrderHistory';
 import OpenOrder from './OpenOrder';
@@ -18,11 +17,14 @@ const Order = () => {
   const { labelId } = useParams();
   const location = useLocation();
   const dispatch = useDispatch();
+  const { paymentHistories, carts, loading } = useSelector(
+    // @ts-ignore
+    (state) => state.order
+  );
   const {
     authState: { isAuthenticated },
   } = useAuth();
   const [tab, setTab] = useState<number>(0);
-
   const [tabs, setTabs] = useState([
     {
       label: 'Order History',
@@ -46,6 +48,7 @@ const Order = () => {
 
   useEffect(() => {
     dispatch(orderPaymentHistory());
+    dispatch(fetchCart());
   }, [dispatch, isAuthenticated]);
 
   const handleTabs = (value: number): void => {
@@ -64,8 +67,10 @@ const Order = () => {
             ))}
           </TabList>
         </Tabs>
-        {labelId === 'order-history' && <OrderHistory />}
-        {labelId === 'cart' && <OpenOrder />}
+        {labelId === 'order-history' && (
+          <OrderHistory paymentHistories={paymentHistories} loading={loading} />
+        )}
+        {labelId === 'cart' && <OpenOrder carts={carts} loading={loading} />}
       </Box>
     </Page>
   );
