@@ -37,7 +37,7 @@ Before getting started, check the `.env.example` at the root of the project to s
 Note: This is the frontend part of the project. The backend codebase can be found [here](https://github.com/sadewole/Crispy-v3-backend).
 Hosted on [heroku](https://crispy-munch-v3-backend.herokuapp.com/)
 
-## Folder Structure
+#### Folder Structure
 
 ```
 ├── public
@@ -56,6 +56,11 @@ Hosted on [heroku](https://crispy-munch-v3-backend.herokuapp.com/)
     └── views
 
 ```
+
+## Appreciation
+
+The credit of this project goes to the Lord almighty. He has been my inspiration and guide.
+Kindly follow me here and on [twitter](https://twitter.com/samador9)
 
 ## License
 
