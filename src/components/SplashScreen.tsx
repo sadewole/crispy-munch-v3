@@ -42,7 +42,6 @@ const SplashScreen = () => {
           hasStripe
           isAnimated
           value={progress}
-          min={20}
           colorScheme='blackAlpha'
           width='400px'
           maxW='400px'
