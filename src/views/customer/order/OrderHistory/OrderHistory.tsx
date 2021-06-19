@@ -27,10 +27,10 @@ const EmptyCart = () => (
       mb='2'
       width='200px'
     />
-    <Text fontSize='3xl' fontWeight='bold'>
+    <Text fontSize='2xl' fontWeight='bold'>
       You have no payment history yet.
     </Text>
-    <Text fontSize={{ base: '2xl', sm: '3xl' }}>
+    <Text fontSize='xl'>
       Explore our meal catalog and discover our best meal!
     </Text>
   </Box>

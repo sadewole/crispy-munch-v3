@@ -27,7 +27,11 @@ const Account = () => {
           Account Overview
         </Text>
         <Divider />
-        <Grid minHeight='200px' templateColumns='repeat(2, 1fr)' gap='2'>
+        <Grid
+          minHeight='200px'
+          templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)' }}
+          gap='2'
+        >
           <AccountDetails user={user} />
           {loading ? (
             <Box
