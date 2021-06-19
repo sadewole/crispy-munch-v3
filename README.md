@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Lumen" title="Lumen" src="https://github.com/sadewole/crispy-munch-v3/tree/master/.github/logo.png" width="140"> </br>
+    <img alt="Lumen" title="Crispy Munch" src="https://github.com/sadewole/crispy-munch-v3/blob/main/.github/logo.png" width="140"> </br>
     Crispy Munch -v3
 </h1>
 
