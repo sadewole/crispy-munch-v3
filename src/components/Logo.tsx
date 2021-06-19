@@ -12,7 +12,13 @@ export const Logo = forwardRef<ImageProps, 'img'>((props, ref) => {
       height='50px'
       width='100px'
     >
-      <Image src='/logo.png' ref={ref} {...props} position='absolute' />
+      <Image
+        src='/logo.png'
+        alt='logo'
+        ref={ref}
+        {...props}
+        position='absolute'
+      />
     </Box>
   );
 });

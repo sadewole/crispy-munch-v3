@@ -7,6 +7,7 @@ import Cart from './views/cart';
 import ReviewCart from './views/review';
 import Account from './layouts/MainLayout/account';
 import Customer from './views/customer';
+import Error from './views/error';
 
 const routes = [
   {
@@ -31,8 +32,11 @@ const routes = [
             element: <Navigate to='/customer/order/order-history' />,
           },
           { path: '/', element: <Navigate to='/customer/account' /> },
+          { path: '*', element: <Navigate to='/404' /> },
         ],
       },
+      { path: '404', element: <Error.NotFoundView /> },
+      { path: '*', element: <Navigate to='/404' /> },
     ],
   },
 ];
