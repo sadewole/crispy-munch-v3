@@ -34,7 +34,7 @@ const slice = createSlice({
       );
     },
     orderPaymentHistory(state, action) {
-      state.paymentHistories = action.payload;
+      state.paymentHistories = action.payload.reverse();
     },
   },
 });

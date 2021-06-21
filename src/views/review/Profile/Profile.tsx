@@ -8,7 +8,7 @@ type ProfileProps = {
   user: any;
   loading: boolean;
   editProfile: string | boolean;
-  setEditProfile: React.Dispatch<React.SetStateAction<string | boolean>>;
+  setEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Profile: React.FC<ProfileProps> = ({
@@ -23,9 +23,11 @@ const Profile: React.FC<ProfileProps> = ({
       <Text fontWeight='bold' fontSize='2xl' mb='2'>
         Your Delivery Details
       </Text>
-      <Link color='blue' onClick={() => setEditProfile(!editProfile)}>
-        {editProfile ? 'close' : 'change address'}
-      </Link>
+      {profile?.phone && (
+        <Link color='blue' onClick={() => setEditProfile(!editProfile)}>
+          {editProfile ? 'close' : 'change address'}
+        </Link>
+      )}
       <Box bgColor='beige' overflow='hidden' borderRadius='base' p='3'>
         {loading ? (
           <Box display='flex' alignItems='center' justifyContent='center'>
@@ -39,12 +41,17 @@ const Profile: React.FC<ProfileProps> = ({
             {!editProfile ? (
               <>
                 <Text fontSize='lg'>
-                  <b>Phone no.:</b> <small>{profile.phone}</small>
+                  <b>Phone no.:</b>{' '}
+                  <small>
+                    {profile.phone ? profile.phone : '--add phone number--'}
+                  </small>
                 </Text>
                 <Text fontSize='lg' fontWeight='bold'>
                   Address:
                 </Text>
-                <Text>{profile.address}</Text>
+                <Text>
+                  {profile.address ? profile.address : '--add address--'}
+                </Text>
               </>
             ) : (
               <ProfileForm setEditProfile={setEditProfile} profile={profile} />

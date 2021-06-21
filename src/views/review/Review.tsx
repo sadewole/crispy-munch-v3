@@ -21,14 +21,18 @@ const Review = () => {
   // @ts-ignore
   const { profile, loading: loadingB } = useSelector((state) => state.user);
 
-  const [editProfile, setEditProfile] = React.useState(
-    profile?.length || false
-  );
+  const [editProfile, setEditProfile] = React.useState(false);
 
   useEffect(() => {
     dispatch(fetchCart());
     dispatch(fetchUserProfile());
   }, [dispatch, isAuthenticated]);
+
+  useEffect(() => {
+    if (!profile?.phone || !profile?.address) {
+      setEditProfile(true);
+    }
+  }, [profile?.phone, profile?.address]);
 
   if (!loadingA && !carts.length) {
     return <Navigate to='/menu' />;

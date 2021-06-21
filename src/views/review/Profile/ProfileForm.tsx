@@ -14,7 +14,7 @@ import { saveUserProfile } from 'src/slices/user';
 
 type ProfileFormProps = {
   profile: { phone: string; address: string };
-  setEditProfile: React.Dispatch<React.SetStateAction<string | boolean>>;
+  setEditProfile: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const ProfileForm = ({ profile, setEditProfile }: ProfileFormProps) => {
